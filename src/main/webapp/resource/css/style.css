@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+.index-login-form{
+	display: flex;
+    justify-content: flex-end;
+    height: 50px;
+    
+	
+}
+
+
+.form-login {
+	border: 1px solid #ccc;
+	padding: 20px;
+	border-radius: 10px;
+	background-color: white;
+	width: 30%;
+	height: 250px;
+	box-shadow: 0 0 10px #ccc;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	
+}
+
+fieldset {
+	border: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+legend {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.login-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh; /* 최소 높이 설정 */
+}
+
+form label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.input-text {
+	width: 80%;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+.input-pass {
+	width: 80%;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+.input-submit {
+	width: 83%;
+	padding: 10px;
+	background-color: #007bff;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+/* 게시판 */
+.form-write {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	background-color: #ecf9eb;
+	border-radius: 5px;
+	width: 80%;
+	height: 400px;
+}
+
+textarea {
+	width: 58%;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	border-color: black;
+	height: 50%;
+}
+
+.input-write {
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	background-color: #4CAF50;
+	color: #fff;
+	cursor: pointer;
+}
+
+.input-reset {
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	background-color: #4CAF50;
+	color: #fff;
+	cursor: pointer;
+}
+
+/* 로그인을 화면 오른쪽 상단에 배치 */
+table {
+	margin-left: auto;
+	margin-right: auto;
+	width: 30%;
+}
+
+table, td, th {
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+;

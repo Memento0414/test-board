@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="writes">
+	<!--로그인시 등록 쿼리 -->
+	<insert id="create" parameterType="hashmap">
+		INSERT INTO POSTS
+		(ID, TITLE, CONTENT, USER_ID)
+		VALUES(#{id}, #{title}, #{content}, #{userId})
+	</insert>
+	<!--비로그인시 등록 쿼리 -->
+	<insert id="noncreate" parameterType="hashmap">
+		INSERT INTO POSTS
+		(ID, TITLE, CONTENT, USER_ID, USER_PASS)
+		VALUES(#{id}, #{title}, #{content}, #{userId}, #{userPass})
+	</insert>
+
+
+	<!-- 게시글 전체 불러오는 쿼리 -->
+	<select id="countDatas" resultType="int" parameterType="string">
+		SELECT COUNT(*) FROM POSTS 
+	</select>
+
+	<!-- 페이징 처리 쿼리 -->
+  <select id="findSomeByAtoB" resultType="data.Write" parameterType="hashmap">
+		SELECT * FROM
+			(SELECT ROWNUM RN, t.* FROM
+			(SELECT * FROM POSTS ORDER BY DATES DESC) t)
+		WHERE RN BETWEEN #{a} AND #{b}
+  </select>
+  
+                
+ <!-- 해당 게시글 가지고 오는 쿼리 -->
+	<select id="findByWrite" resultType="data.Write" parameterType="string">
+		SELECT * FROM POSTS WHERE ID=#{id}
+	</select>
+ <!--글 상세보기 시 조회수 올리는 쿼리  -->
+ <update id="viewsCountUp" parameterType="string">
+	UPDATE POSTS SET VIEWS = VIEWS + 1 WHERE ID=#{id}	
+ </update>
+ 
+ <!-- 추천 기능 쿼리 -->
+ <insert id="likeUp" parameterType="hashmap"> 
+ 	INSERT INTO LIKES(ID, USER_ID) VALUES(#{id}, #{userId})
+ </insert>
+ <!-- 게시글 추천 아이디 전체 가져오기 -->
+
+ <!-- 해당 게시글 추천 아이디 가져오기 -->
+ <select id="findByLikeId" resultType="data.Like" parameterType="string">
+ 	SELECT * FROM POSTS LIKES WHERE ID=#{id}
+ </select>
+ 
+ 
+ <!--작성한 게시글 수정 -->	
+ <update id="updateWriting" parameterType="hashmap">
+ 	UPDATE POSTS SET TITLE= #{title}, CONTENT= #{content},
+ 	USER_ID=#{userId}
+ 	<if test="userPass != null">
+ 		, USER_PASS = #{userPass}
+ 	</if>
+ 		WHERE ID=#{id}
+ </update>
+ 
+ 	<!--게시글 삭제  -->
+ 	<delete id="deleteWrite">
+ 		DELETE FROM POSTS WHERE ID=#{id}
+ 	</delete>
+ 
+</mapper>
